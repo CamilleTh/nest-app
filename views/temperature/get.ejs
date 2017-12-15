@@ -1,0 +1,34 @@
+<canvas id="MyTempChart" width="800px" height="800px"></canvas>
+<script>
+var ctx = document.getElementById("MyTempChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <%- JSON.stringify(date) %>,
+        datasets: [{
+            label: 'Température de la journée',
+            data: <%- JSON.stringify(temp) %>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+            ],
+            borderWidth: 4,
+			fill: false,
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    suggestedMin: 15,
+                    suggestedMax: 25
+                }
+            }]
+        },
+        responsive: false,
+        maintainAspectRatio: false,
+    }
+});
+</script>
