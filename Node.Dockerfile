@@ -1,12 +1,10 @@
 FROM node:latest
 
-RUN npm install body-parser -g
-
 RUN git clone https://github.com/CamilleTh/nest-app.git
 RUN npm install sails -g
+
 WORKDIR nest-app
-RUN ls
-RUN npm cache verify
+RUN rm package-lock.json
 RUN npm install 
 RUN sails lift
 
